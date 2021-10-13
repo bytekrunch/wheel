@@ -3,7 +3,7 @@ import React from "react";
 import { Clock, MenuVertical } from "@bigbinary/neeto-icons";
 import { Tag } from "@bigbinary/neetoui/v2";
 import { Avatar, Label } from "@bigbinary/neetoui/v2";
-import { Typography } from "@bigbinary/neetoui/v2";
+import { Typography, Dropdown } from "@bigbinary/neetoui/v2";
 
 export default function NoteTables({
   //selectedNoteIds,
@@ -21,7 +21,16 @@ export default function NoteTables({
         >
           <div className="border-b-2 relative">
             <div className="absolute top-0 right-0">
-              <MenuVertical size={15} />
+              <Dropdown
+                icon={function noRefCheck() {
+                  return <MenuVertical />;
+                }}
+                position="bottom-end"
+                buttonStyle="text"
+              >
+                <li>Edit</li>
+                <li>Delete</li>
+              </Dropdown>
             </div>
             <Typography
               style="h4"
