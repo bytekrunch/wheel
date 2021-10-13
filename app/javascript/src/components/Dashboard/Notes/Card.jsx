@@ -1,5 +1,10 @@
 import React from "react";
 
+import { Clock, MenuVertical } from "@bigbinary/neeto-icons";
+import { Tag } from "@bigbinary/neetoui/v2";
+import { Avatar, Label } from "@bigbinary/neetoui/v2";
+import { Typography } from "@bigbinary/neetoui/v2";
+
 export default function NoteTables({
   //selectedNoteIds,
   //setSelectedNoteIds,
@@ -11,16 +16,41 @@ export default function NoteTables({
         <div
           key={note.id}
           className={
-            "cursor-pointer bg-white border neeto-ui-bd-gray-300 p-4 neeto-ui-shadow-s  w-full h-36 hover:bg-gray-50 "
+            "cursor-pointer my-1  bg-white border neeto-ui-bd-gray-300 p-4 neeto-ui-shadow-s  w-full  hover:bg-gray-50 "
           }
         >
-          <div className="border-b-2 ">
-            <h4 className="text-base font-semibold text-gray-900 my-0.5">
+          <div className="border-b-2 relative">
+            <div className="absolute top-0 right-0">
+              <MenuVertical size={15} />
+            </div>
+            <Typography
+              style="h4"
+              className="font-semibold text-gray-900 my-0.5"
+            >
               {note.title}
-            </h4>
-
-            <div className="flex flex-row items-center neeto-ui-text-gray-600 justify-start ">
+            </Typography>
+            <Typography
+              style="body2"
+              className="neeto-ui-text-gray-600 mt-1 mb-3 "
+            >
               {note.description}
+            </Typography>
+          </div>
+          <div className="mt-4 flex flex-row justify-between">
+            <Tag
+              label="Getting Started"
+              size="large"
+              className="neeto-ui-bg-gray-100 neeto-ui-text-gray-500"
+            />
+            <div className="flex flex-row items-center justify-between space-x-1 neeto-ui-text-gray-600">
+              <Clock size={14} />
+              <Label>Created 2 hours ago</Label>
+              <Avatar
+                size="small"
+                user={{
+                  imageUrl: "https://randomuser.me/api/portraits/women/90.jpg"
+                }}
+              />
             </div>
           </div>
         </div>

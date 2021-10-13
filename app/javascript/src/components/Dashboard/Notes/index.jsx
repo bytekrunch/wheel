@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-import { Search } from "@bigbinary/neeto-icons";
+import { Search, BurgerMenu } from "@bigbinary/neeto-icons";
 import { Input } from "@bigbinary/neetoui/v2";
+import { Button } from "@bigbinary/neetoui/v2";
 import { Header } from "@bigbinary/neetoui/v2/layouts";
 import EmptyNotesListImage from "images/EmptyNotesList";
-import { Button, PageLoader } from "neetoui";
+import { PageLoader } from "neetoui";
 import { BrowserRouter } from "react-router-dom";
 
 import notesApi from "apis/notes";
@@ -57,6 +58,7 @@ const Notes = () => {
 
       <BrowserRouter>
         <Header
+          className="px-6"
           actionBlock={
             <>
               <Input
@@ -66,15 +68,19 @@ const Notes = () => {
                 prefix={<Search size={16} />}
               />
               <Button
+                ClassName="mr-3"
                 label="Add Note +"
                 onClick={() => setShowNewNotePane(true)}
               />
             </>
           }
           menuBarHandle={
-            <>
-              <Button className="mr-2" style="text" />
-            </>
+            <Button
+              icon={function noRefCheck() {
+                return <BurgerMenu />;
+              }}
+              style="text"
+            />
           }
           title="All Notes"
         />
