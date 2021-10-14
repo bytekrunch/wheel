@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 import { Search, BurgerMenu, MenuHorizontal } from "@bigbinary/neeto-icons";
-//import EmptyNotesListImage from "images/EmptyNotesList";
 import { PageLoader } from "neetoui";
-import { Input } from "neetoui/v2";
-import { Button, Pagination, Dropdown, Checkbox } from "neetoui/v2";
+import { Button, Pagination, Dropdown, Checkbox, Avatar } from "neetoui/v2";
+//import EmptyNotesListImage from "images/EmptyNotesList";
+import { Input, Typography } from "neetoui/v2";
 import { Header } from "neetoui/v2/layouts";
 import { Container } from "neetoui/v2/layouts";
 
@@ -89,7 +89,24 @@ const Contacts = () => {
                         <td>
                           <Checkbox name="1" />
                         </td>
-                        <td>Ronald Richards </td>
+                        <td>
+                          <div className="flex space-x-4">
+                            <Avatar
+                              size="large"
+                              user={{
+                                name: "Ronald Richards"
+                              }}
+                            />
+                            <div className="flex flex-col mt-1">
+                              <Typography style="h5">
+                                Ronald Richards
+                              </Typography>
+                              <Typography style="body3" weight="light">
+                                Owner
+                              </Typography>
+                            </div>
+                          </div>
+                        </td>
                         <td>albert@borer.com</td>
                         <td>Feb 5, 2021</td>
                         <td>
@@ -109,7 +126,24 @@ const Contacts = () => {
                         <td>
                           <Checkbox name="2" />
                         </td>
-                        <td>Jacob Jones</td>
+                        <td>
+                          <div className="flex space-x-4 ">
+                            <Avatar
+                              size="large"
+                              user={{
+                                imageUrl:
+                                  "https://randomuser.me/api/portraits/women/90.jpg"
+                              }}
+                            />
+                            <div className="flex flex-col mt-1">
+                              <Typography style="h5">Jacob Jones</Typography>
+                              <Typography style="body3" weight="light">
+                                Owner
+                              </Typography>
+                            </div>
+                          </div>
+                        </td>
+
                         <td>albert@borer.com</td>
                         <td>Feb 5, 2021</td>
                         <td>
