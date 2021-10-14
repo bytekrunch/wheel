@@ -6,11 +6,13 @@ import { Sidebar } from "neetoui/v2/layouts";
 import { withRouter } from "react-router-dom";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 
+import Contacts from "../../Dashboard/Contacts";
+import Notes from "../../Dashboard/Notes";
 //import authenticationApi from "apis/authentication";
 //import { resetAuthTokens } from "apis/axios";
 //import { useAuthDispatch } from "contexts/auth";
-import ContactsMenuBar from "./ContactsMenuBar";
-import NotesMenuBar from "./Menubar";
+//import ContactsMenuBar from "./ContactsMenuBar";
+//import NotesMenuBar from "./Menubar";
 
 //import NavItem from "./NavItem";
 //import Notes from "components/Dashboard/Notes";
@@ -30,7 +32,7 @@ const NavBar = () => {
 
   return (
     <BrowserRouter>
-      <div className="flex flex-row items-start justify-start">
+      <div className="flex flex-row items-start justify-start w-full">
         <Sidebar
           isCollapsed
           navLinks={[
@@ -76,17 +78,17 @@ const NavBar = () => {
             name: "Kieran Miller"
           }}
         />
-        <div className="relative flex flex-col flex-grow h-screen overflow-auto">
+        <div className="relative flex flex-col flex-grow h-screen overflow-auto w-auto">
           <Switch>
             <Route
               component={function noRefCheck() {
-                return <NotesMenuBar />;
+                return <Notes />;
               }}
               path="/notes/details"
             />
             <Route
               component={function noRefCheck() {
-                return <ContactsMenuBar />;
+                return <Contacts />;
               }}
               path="/contacts/details"
             />
