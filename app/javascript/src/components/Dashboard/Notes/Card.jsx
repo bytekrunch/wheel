@@ -2,7 +2,7 @@ import React from "react";
 
 import { Clock, MenuVertical } from "@bigbinary/neeto-icons";
 import { Tag } from "@bigbinary/neetoui/v2";
-import { Avatar, Label } from "@bigbinary/neetoui/v2";
+import { Avatar, Tooltip } from "@bigbinary/neetoui/v2";
 import { Typography, Dropdown } from "@bigbinary/neetoui/v2";
 
 export default function NoteCard({
@@ -62,7 +62,9 @@ export default function NoteCard({
             />
             <div className="flex flex-row items-center justify-between space-x-1 neeto-ui-text-gray-600">
               <Clock size={14} />
-              <Label>Created 2 hours ago</Label>
+              <Tooltip content="Wednesday, 10:30AM" placement="bottom-start">
+                <span className="my-auto text-sm">Created 2 hours ago</span>
+              </Tooltip>
               <Avatar
                 size="small"
                 user={{
