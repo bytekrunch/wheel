@@ -1,8 +1,8 @@
 import React from "react";
 
 import { Formik, Form } from "formik";
-import { Select, Tag } from "neetoui/v2";
-import { Input, Textarea } from "neetoui/v2/formik";
+import { Select } from "neetoui/v2";
+import { Input } from "neetoui/v2/formik";
 import * as yup from "yup";
 
 import notesApi from "apis/notes";
@@ -25,79 +25,62 @@ export default function NewContactForm({ onClose, refetch }) {
       }}
       onSubmit={handleSubmit}
       validationSchema={yup.object({
-        title: yup.string().required("Title is required"),
-        description: yup.string().required("Description is required")
+        firstName: yup.string().required("First Name is required"),
+        lastName: yup.string().required("Last Name is required"),
+        email: yup.string().email().required("Email is required"),
+        role: yup
+          .object({
+            label: yup.string(),
+            value: yup.string()
+          })
+          .required("Role required")
       })}
     >
       {() => (
         <Form>
+          <div className="flex space-x-2">
+            <Input
+              label="First Name"
+              name="firstName"
+              className="mb-6"
+              required={true}
+              placeholder="Enter First Name"
+            />
+            <Input
+              label="Last Name"
+              name="lastName"
+              className="mb-6"
+              required={true}
+              placeholder="Enter Last Name"
+            />
+          </div>
+
           <Input
-            label="Title"
-            name="title"
+            label="Email"
+            name="email"
             className="mb-6"
             required={true}
-            placeholder="Enter Note Title"
+            placeholder="Enter Last Name"
           />
-          <Textarea
-            label="Description"
-            name="description"
-            rows={1}
-            required={true}
-            placeholder="Enter Note Description"
-          />
+
           <div className="my-6">
             <Select
               isClearable
               isSearchable
               required={true}
-              label="Assigned Contact"
+              label="Role"
               name="role"
               options={[
                 {
-                  label: "Value One",
-                  value: "value1"
-                },
-                {
-                  label: "Value Two",
-                  value: "value2"
-                },
-                {
-                  label: "Value Three",
-                  value: "value3"
-                },
-                {
-                  label: "Value Four",
-                  value: "value4"
-                },
-                {
-                  label: "Value Five",
-                  value: "value5"
-                }
-              ]}
-              placeholder="Select a Role"
-            />
-          </div>
-          <div className="my-6">
-            <Select
-              isClearable
-              isSearchable
-              required={true}
-              isMulti
-              label="Tags"
-              name="tags"
-              options={[
-                {
-                  label: (
-                    <Tag color="green" label="Getting Started" size="small" />
-                  ),
+                  label: "Owner",
                   value: "Getting Started"
                 },
                 {
-                  label: <Tag color="blue" label="Tag Two" size="small" />,
+                  label: "CEO",
                   value: "Tag Two"
                 },
                 {
-                  label: <Tag color="red" label="Tag Three" size="small" />,
+                  label: "Director",
                   value: "Tag Three"
                 }
               ]}
