@@ -2,8 +2,8 @@ import React from "react";
 import { useState } from "react";
 
 import { Search, Settings, Plus } from "@bigbinary/neeto-icons";
-import { Typography } from "@bigbinary/neetoui/v2";
-import { MenuBar } from "@bigbinary/neetoui/v2/layouts";
+import { Typography } from "neetoui/v2";
+import { MenuBar } from "neetoui/v2/layouts";
 import { withRouter } from "react-router-dom";
 
 const NotesMenuBar = () => {
@@ -28,7 +28,8 @@ const NotesMenuBar = () => {
           iconProps={[
             {
               icon: () => <Search size={20} />,
-              onClick: () => setIsSearchCollapsed(!isSearchCollapsed)
+              onClick: () =>
+                setIsSearchCollapsed(isSearchCollapsed => !isSearchCollapsed)
             }
           ]}
         >

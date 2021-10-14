@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Header } from "@bigbinary/neetoui/v2/layouts";
 import { Button } from "neetoui";
+import { Header } from "neetoui/v2/layouts";
 import { BrowserRouter } from "react-router-dom";
 
 //import notesApi from "apis/notes";
