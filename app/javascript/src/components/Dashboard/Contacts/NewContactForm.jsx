@@ -25,8 +25,15 @@ export default function NewContactForm({ onClose, refetch }) {
       }}
       onSubmit={handleSubmit}
       validationSchema={yup.object({
-        title: yup.string().required("Title is required"),
-        description: yup.string().required("Description is required")
+        firstName: yup.string().required("First Name is required"),
+        lastName: yup.string().required("Last Name is required"),
+        email: yup.string().email().required("Email is required"),
+        role: yup
+          .object({
+            label: yup.string(),
+            value: yup.string()
+          })
+          .required("Role required")
       })}
     >
       {() => (
@@ -50,7 +57,7 @@ export default function NewContactForm({ onClose, refetch }) {
 
           <Input
             label="Email"
-            name="Email"
+            name="email"
             className="mb-6"
             required={true}
             placeholder="Enter Last Name"
@@ -61,7 +68,6 @@ export default function NewContactForm({ onClose, refetch }) {
               isClearable
               isSearchable
               required={true}
-              isMulti
               label="Role"
               name="role"
               options={[

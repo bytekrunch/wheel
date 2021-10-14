@@ -85,7 +85,7 @@ const Contacts = () => {
                   .fill()
                   .map((_, index) => (
                     <React.Fragment key={index}>
-                      <tr>
+                      <tr className="h-10">
                         <td>
                           <Checkbox name="1" />
                         </td>

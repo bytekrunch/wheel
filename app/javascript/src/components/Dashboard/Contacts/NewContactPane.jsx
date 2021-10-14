@@ -23,7 +23,7 @@ export default function NewContactPane({ fetchNotes, showPane, setShowPane }) {
           icon={Check}
           label="Save Changes"
           onClick={() => {
-            Toastr.success("Note added Successfully");
+            Toastr.success("Contact added Successfully");
             setShowPane(false);
           }}
         />
