@@ -1,8 +1,8 @@
 import React from "react";
 
 import { Formik, Form } from "formik";
-import { Select, Tag } from "neetoui/v2";
-import { Input, Textarea } from "neetoui/v2/formik";
+import { Select } from "neetoui/v2";
+import { Input } from "neetoui/v2/formik";
 import * as yup from "yup";
 
 import notesApi from "apis/notes";
@@ -31,73 +31,50 @@ export default function NewContactForm({ onClose, refetch }) {
     >
       {() => (
         <Form>
-          <Input
-            label="Title"
-            name="title"
-            className="mb-6"
-            required={true}
-            placeholder="Enter Note Title"
-          />
-          <Textarea
-            label="Description"
-            name="description"
-            rows={1}
-            required={true}
-            placeholder="Enter Note Description"
-          />
-          <div className="my-6">
-            <Select
-              isClearable
-              isSearchable
+          <div className="flex space-x-2">
+            <Input
+              label="First Name"
+              name="firstName"
+              className="mb-6"
               required={true}
-              label="Assigned Contact"
-              name="role"
-              options={[
-                {
-                  label: "Value One",
-                  value: "value1"
-                },
-                {
-                  label: "Value Two",
-                  value: "value2"
-                },
-                {
-                  label: "Value Three",
-                  value: "value3"
-                },
-                {
-                  label: "Value Four",
-                  value: "value4"
-                },
-                {
-                  label: "Value Five",
-                  value: "value5"
-                }
-              ]}
-              placeholder="Select a Role"
+              placeholder="Enter First Name"
+            />
+            <Input
+              label="Last Name"
+              name="lastName"
+              className="mb-6"
+              required={true}
+              placeholder="Enter Last Name"
             />
           </div>
+
+          <Input
+            label="Email"
+            name="Email"
+            className="mb-6"
+            required={true}
+            placeholder="Enter Last Name"
+          />
+
           <div className="my-6">
             <Select
               isClearable
               isSearchable
               required={true}
               isMulti
-              label="Tags"
-              name="tags"
+              label="Role"
+              name="role"
               options={[
                 {
-                  label: (
-                    <Tag color="green" label="Getting Started" size="small" />
-                  ),
+                  label: "Owner",
                   value: "Getting Started"
                 },
                 {
-                  label: <Tag color="blue" label="Tag Two" size="small" />,
+                  label: "CEO",
                   value: "Tag Two"
                 },
                 {
-                  label: <Tag color="red" label="Tag Three" size="small" />,
+                  label: "Director",
                   value: "Tag Three"
                 }
               ]}
