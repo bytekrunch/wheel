@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 import { Search, BurgerMenu } from "@bigbinary/neeto-icons";
-import { Input } from "@bigbinary/neetoui/v2";
-import { Button } from "@bigbinary/neetoui/v2";
-import { Header } from "@bigbinary/neetoui/v2/layouts";
 import EmptyNotesListImage from "images/EmptyNotesList";
 import { PageLoader } from "neetoui";
+import { Input } from "neetoui/v2";
+import { Button } from "neetoui/v2";
+import { Header } from "neetoui/v2/layouts";
 import { BrowserRouter } from "react-router-dom";
 
 import notesApi from "apis/notes";

@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Select, Tag } from "@bigbinary/neetoui/v2";
 import { Formik, Form } from "formik";
+import { Select, Tag } from "neetoui/v2";
 import { Input, Textarea } from "neetoui/v2/formik";
 import * as yup from "yup";
 
