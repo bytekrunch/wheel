@@ -16,7 +16,7 @@ const Home = () => {
       <Navbar />
       <div className="flex flex-col items-start justify-start flex-grow h-screen overflow-y-auto">
         <Switch>
-          <Route exact path="/notes/details" component={Notes} />
+          <Route exact path="/notes" component={Notes} />
           <Route exact path="/contacts/details" component={Contacts} />
           <Route exact path="/my/password/edit" component={PasswordEdit} />
           <Route exact path="/my/profile" component={Profile} />

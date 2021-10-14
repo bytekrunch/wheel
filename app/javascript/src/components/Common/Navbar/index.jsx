@@ -1,7 +1,7 @@
 import React from "react";
 
 //import { Toastr } from "neetoui";
-import { Clock, NeetoInsights, UserCircle } from "@bigbinary/neeto-icons";
+import { Dashboard, Settings, UserCircle } from "@bigbinary/neeto-icons";
 import { Sidebar } from "@bigbinary/neetoui/v2/layouts";
 import { withRouter } from "react-router-dom";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
@@ -36,7 +36,7 @@ const NavBar = () => {
           navLinks={[
             {
               icon: function noRefCheck() {
-                return <Clock />;
+                return <Dashboard />;
               },
               label: "Notes",
               to: "/notes/details"
@@ -50,7 +50,7 @@ const NavBar = () => {
             },
             {
               icon: function noRefCheck() {
-                return <NeetoInsights />;
+                return <Settings />;
               },
               label: "Insights",
               to: "/formik"

@@ -2,16 +2,17 @@ import React from "react";
 
 import { Clock, MenuVertical } from "@bigbinary/neeto-icons";
 import { Tag } from "@bigbinary/neetoui/v2";
-import { Avatar, Label } from "@bigbinary/neetoui/v2";
-import { Typography } from "@bigbinary/neetoui/v2";
+import { Avatar, Tooltip } from "@bigbinary/neetoui/v2";
+import { Typography, Dropdown } from "@bigbinary/neetoui/v2";
 
-export default function NoteTables({
-  //selectedNoteIds,
-  //setSelectedNoteIds,
-  notes = []
+export default function NoteCard({
+  selectedNoteIds,
+  setSelectedNoteIds,
+  notes = [],
+  setShowDeleteAlert
 }) {
   return (
-    <div className="w-full px-4 flex flex-col items-start ">
+    <div className="w-full px-3 flex flex-col items-start ">
       {notes.map(note => (
         <div
           key={note.id}
@@ -21,7 +22,24 @@ export default function NoteTables({
         >
           <div className="border-b-2 relative">
             <div className="absolute top-0 right-0">
-              <MenuVertical size={15} />
+              <Dropdown
+                icon={function noRefCheck() {
+                  return <MenuVertical size={15} />;
+                }}
+                position="bottom-end"
+                buttonStyle="text"
+              >
+                <li className="w-52 my-2 m-4">Edit</li>
+                <li
+                  className="w-52 my-2 m-4"
+                  onClick={() => {
+                    setSelectedNoteIds([...selectedNoteIds, note.id]);
+                    setShowDeleteAlert(true);
+                  }}
+                >
+                  Delete
+                </li>
+              </Dropdown>
             </div>
             <Typography
               style="h4"
@@ -44,7 +62,9 @@ export default function NoteTables({
             />
             <div className="flex flex-row items-center justify-between space-x-1 neeto-ui-text-gray-600">
               <Clock size={14} />
-              <Label>Created 2 hours ago</Label>
+              <Tooltip content="Wednesday, 10:30AM" placement="bottom-start">
+                <span className="my-auto text-sm">Created 2 hours ago</span>
+              </Tooltip>
               <Avatar
                 size="small"
                 user={{

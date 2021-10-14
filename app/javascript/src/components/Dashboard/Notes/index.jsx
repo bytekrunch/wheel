@@ -11,7 +11,7 @@ import { BrowserRouter } from "react-router-dom";
 import notesApi from "apis/notes";
 import EmptyState from "components/Common/EmptyState";
 
-import NoteTables from "./Card";
+import NoteCard from "./Card";
 import DeleteAlert from "./DeleteAlert";
 import NewNotePane from "./NewNotePane";
 
@@ -58,17 +58,17 @@ const Notes = () => {
 
       <BrowserRouter>
         <Header
-          className="px-6"
+          className="px-3"
           actionBlock={
             <>
               <Input
-                placeholder="Search name, email, phone number etc"
-                className="flex flex-row m-1"
+                placeholder="Search name, Email, Phone Number etc"
+                className="flex flex-row w-72 h-8 m-2"
                 size="small"
                 prefix={<Search size={16} />}
               />
               <Button
-                ClassName="mr-3"
+                ClassName="mr-3 h-8"
                 label="Add Note +"
                 onClick={() => setShowNewNotePane(true)}
               />
@@ -99,10 +99,11 @@ const Notes = () => {
               disabled: !selectedNoteIds.length
             }}
           /> */}
-          <NoteTables
+          <NoteCard
             selectedNoteIds={selectedNoteIds}
             setSelectedNoteIds={setSelectedNoteIds}
             notes={notes}
+            setShowDeleteAlert={setShowDeleteAlert}
           />
         </>
       ) : (
