@@ -5,13 +5,14 @@ import { Tag } from "@bigbinary/neetoui/v2";
 import { Avatar, Label } from "@bigbinary/neetoui/v2";
 import { Typography, Dropdown } from "@bigbinary/neetoui/v2";
 
-export default function NoteTables({
-  //selectedNoteIds,
-  //setSelectedNoteIds,
-  notes = []
+export default function NoteCard({
+  selectedNoteIds,
+  setSelectedNoteIds,
+  notes = [],
+  setShowDeleteAlert
 }) {
   return (
-    <div className="w-full px-4 flex flex-col items-start ">
+    <div className="w-full px-3 flex flex-col items-start ">
       {notes.map(note => (
         <div
           key={note.id}
@@ -23,13 +24,21 @@ export default function NoteTables({
             <div className="absolute top-0 right-0">
               <Dropdown
                 icon={function noRefCheck() {
-                  return <MenuVertical />;
+                  return <MenuVertical size={15} />;
                 }}
                 position="bottom-end"
                 buttonStyle="text"
               >
-                <li>Edit</li>
-                <li>Delete</li>
+                <li className="w-52 my-2 m-4">Edit</li>
+                <li
+                  className="w-52 my-2 m-4"
+                  onClick={() => {
+                    setSelectedNoteIds([...selectedNoteIds, note.id]);
+                    setShowDeleteAlert(true);
+                  }}
+                >
+                  Delete
+                </li>
               </Dropdown>
             </div>
             <Typography
