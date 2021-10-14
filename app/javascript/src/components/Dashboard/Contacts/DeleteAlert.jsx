@@ -1,8 +1,8 @@
 import React from "react";
 
-import { Modal, Typography, Button } from "neetoui/v2";
+import { Modal, Typography, Button, Toastr } from "neetoui/v2";
 
-export default function DeleteAlert({ onClose }) {
+export default function DeleteAlert({ onClose, setShowDeleteAlert }) {
   return (
     <Modal isOpen onClose={onClose} loading={false}>
       <Modal.Header>
@@ -19,7 +19,14 @@ export default function DeleteAlert({ onClose }) {
         </Typography>
       </Modal.Body>
       <Modal.Footer className="space-x-2">
-        <Button label="Continue" size="large" onClick={onClose} />
+        <Button
+          label="Continue"
+          size="large"
+          onClick={() => {
+            Toastr.success("Contact deleted Successfully");
+            setShowDeleteAlert(false);
+          }}
+        />
         <Button style="text" label="Cancel" size="large" onClick={onClose} />
       </Modal.Footer>
     </Modal>

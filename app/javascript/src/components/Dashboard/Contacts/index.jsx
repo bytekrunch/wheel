@@ -4,7 +4,7 @@ import { Search, BurgerMenu, MenuHorizontal } from "@bigbinary/neeto-icons";
 import { PageLoader } from "neetoui";
 import { Button, Pagination, Dropdown, Checkbox, Avatar } from "neetoui/v2";
 //import EmptyNotesListImage from "images/EmptyNotesList";
-import { Input, Typography, Toastr } from "neetoui/v2";
+import { Input, Typography } from "neetoui/v2";
 import { Header } from "neetoui/v2/layouts";
 import { Container } from "neetoui/v2/layouts";
 
@@ -116,8 +116,9 @@ const Contacts = () => {
                               buttonStyle="icon"
                               autoWidth
                             >
-                              <li>Edit</li>
+                              <li className="w-52 my-2 m-4">Edit</li>
                               <li
+                                className="w-52 my-2 m-4"
                                 onClick={() => {
                                   setShowDeleteAlert(true);
                                 }}
@@ -159,8 +160,9 @@ const Contacts = () => {
                               buttonStyle="icon"
                               autoWidth
                             >
-                              <li>Edit</li>
+                              <li className="w-52 my-2 m-4">Edit</li>
                               <li
+                                className="w-52 my-2 m-4"
                                 onClick={() => {
                                   setShowDeleteAlert(true);
                                 }}
@@ -192,9 +194,9 @@ const Contacts = () => {
           />
           {showDeleteAlert && (
             <DeleteAlert
+              setShowDeleteAlert={setShowDeleteAlert}
               onClose={() => {
                 setShowDeleteAlert(false);
-                Toastr.success("Contact deleted Successfully");
               }}
             />
           )}
