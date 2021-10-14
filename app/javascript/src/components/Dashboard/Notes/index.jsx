@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from "react";
 
+import { Search, BurgerMenu } from "@bigbinary/neeto-icons";
+import { Input } from "@bigbinary/neetoui/v2";
+import { Button } from "@bigbinary/neetoui/v2";
+import { Header } from "@bigbinary/neetoui/v2/layouts";
 import EmptyNotesListImage from "images/EmptyNotesList";
-import { Button, PageLoader } from "neetoui";
-import { Header, SubHeader } from "neetoui/layouts";
+import { PageLoader } from "neetoui";
+import { BrowserRouter } from "react-router-dom";
 
 import notesApi from "apis/notes";
 import EmptyState from "components/Common/EmptyState";
 
+import NoteTables from "./Card";
 import DeleteAlert from "./DeleteAlert";
 import NewNotePane from "./NewNotePane";
-import NoteTable from "./NoteTable";
 
 const Notes = () => {
   const [loading, setLoading] = useState(true);
   const [showNewNotePane, setShowNewNotePane] = useState(false);
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  //const [searchTerm, setSearchTerm] = useState("");
   const [selectedNoteIds, setSelectedNoteIds] = useState([]);
   const [notes, setNotes] = useState([]);
 
@@ -41,7 +45,7 @@ const Notes = () => {
 
   return (
     <>
-      <Header
+      {/* <Header
         title="Notes"
         actionBlock={
           <Button
@@ -50,10 +54,41 @@ const Notes = () => {
             icon="ri-add-line"
           />
         }
-      />
+      /> */}
+
+      <BrowserRouter>
+        <Header
+          className="px-6"
+          actionBlock={
+            <>
+              <Input
+                placeholder="Search name, email, phone number etc"
+                className="flex flex-row m-1"
+                size="small"
+                prefix={<Search size={16} />}
+              />
+              <Button
+                ClassName="mr-3"
+                label="Add Note +"
+                onClick={() => setShowNewNotePane(true)}
+              />
+            </>
+          }
+          menuBarHandle={
+            <Button
+              icon={function noRefCheck() {
+                return <BurgerMenu />;
+              }}
+              style="text"
+            />
+          }
+          title="All Notes"
+        />
+      </BrowserRouter>
+
       {notes.length ? (
         <>
-          <SubHeader
+          {/* <SubHeader
             searchProps={{
               value: searchTerm,
               onChange: e => setSearchTerm(e.target.value),
@@ -63,8 +98,8 @@ const Notes = () => {
               onClick: () => setShowDeleteAlert(true),
               disabled: !selectedNoteIds.length
             }}
-          />
-          <NoteTable
+          /> */}
+          <NoteTables
             selectedNoteIds={selectedNoteIds}
             setSelectedNoteIds={setSelectedNoteIds}
             notes={notes}
