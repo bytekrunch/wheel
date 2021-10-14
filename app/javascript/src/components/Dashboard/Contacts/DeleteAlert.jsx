@@ -1,27 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Modal, Typography, Button } from "neetoui/v2";
 
-import notesApi from "apis/notes";
-
-export default function DeleteAlert({ refetch, onClose, selectedNoteIds }) {
-  const [deleting, setDeleting] = useState(false);
-  const handleDelete = async () => {
-    try {
-      setDeleting(true);
-      await notesApi.destroy({ ids: selectedNoteIds });
-      onClose();
-      refetch();
-    } catch (error) {
-      logger.error(error);
-    } finally {
-      setDeleting(false);
-    }
-  };
+export default function DeleteAlert({ onClose }) {
   return (
-    <Modal isOpen onClose={onClose} loading={deleting}>
+    <Modal isOpen onClose={onClose} loading={false}>
       <Modal.Header>
-        <Typography style="h2">Delete Note</Typography>
+        <Typography style="h2">Delete Contact</Typography>
       </Modal.Header>
       <Modal.Body>
         <Typography
@@ -29,12 +14,12 @@ export default function DeleteAlert({ refetch, onClose, selectedNoteIds }) {
           lineHeight="normal"
           className="neeto-ui-text-gray-700"
         >
-          Are you sure you want to delete the note? This action cannot be
+          Are you sure you want to delete the conntact? This action cannot be
           undone.
         </Typography>
       </Modal.Body>
       <Modal.Footer className="space-x-2">
-        <Button label="Continue" size="large" onClick={handleDelete} />
+        <Button label="Continue" size="large" onClick={onClose} />
         <Button style="text" label="Cancel" size="large" onClick={onClose} />
       </Modal.Footer>
     </Modal>

@@ -4,7 +4,7 @@ import { Search, BurgerMenu, MenuHorizontal } from "@bigbinary/neeto-icons";
 import { PageLoader } from "neetoui";
 import { Button, Pagination, Dropdown, Checkbox, Avatar } from "neetoui/v2";
 //import EmptyNotesListImage from "images/EmptyNotesList";
-import { Input, Typography } from "neetoui/v2";
+import { Input, Typography, Toastr } from "neetoui/v2";
 import { Header } from "neetoui/v2/layouts";
 import { Container } from "neetoui/v2/layouts";
 
@@ -117,7 +117,13 @@ const Contacts = () => {
                               autoWidth
                             >
                               <li>Edit</li>
-                              <li>Delete</li>
+                              <li
+                                onClick={() => {
+                                  setShowDeleteAlert(true);
+                                }}
+                              >
+                                Delete
+                              </li>
                             </Dropdown>
                           </div>
                         </td>
@@ -154,7 +160,13 @@ const Contacts = () => {
                               autoWidth
                             >
                               <li>Edit</li>
-                              <li>Delete</li>
+                              <li
+                                onClick={() => {
+                                  setShowDeleteAlert(true);
+                                }}
+                              >
+                                Delete
+                              </li>
                             </Dropdown>
                           </div>
                         </td>
@@ -177,13 +189,13 @@ const Contacts = () => {
           <NewContactPane
             showPane={showNewNotePane}
             setShowPane={setShowNewNotePane}
-            //fetchNotes={fetchNotes}
           />
           {showDeleteAlert && (
             <DeleteAlert
-              //selectedNoteIds={selectedNoteIds}
-              onClose={() => setShowDeleteAlert(false)}
-              //refetch={fetchNotes}
+              onClose={() => {
+                setShowDeleteAlert(false);
+                Toastr.success("Contact deleted Successfully");
+              }}
             />
           )}
         </Container>
