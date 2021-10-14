@@ -116,8 +116,15 @@ const Contacts = () => {
                               buttonStyle="icon"
                               autoWidth
                             >
-                              <li>Edit</li>
-                              <li>Delete</li>
+                              <li className="w-52 my-2 m-4">Edit</li>
+                              <li
+                                className="w-52 my-2 m-4"
+                                onClick={() => {
+                                  setShowDeleteAlert(true);
+                                }}
+                              >
+                                Delete
+                              </li>
                             </Dropdown>
                           </div>
                         </td>
@@ -153,8 +160,15 @@ const Contacts = () => {
                               buttonStyle="icon"
                               autoWidth
                             >
-                              <li>Edit</li>
-                              <li>Delete</li>
+                              <li className="w-52 my-2 m-4">Edit</li>
+                              <li
+                                className="w-52 my-2 m-4"
+                                onClick={() => {
+                                  setShowDeleteAlert(true);
+                                }}
+                              >
+                                Delete
+                              </li>
                             </Dropdown>
                           </div>
                         </td>
@@ -177,13 +191,13 @@ const Contacts = () => {
           <NewContactPane
             showPane={showNewNotePane}
             setShowPane={setShowNewNotePane}
-            //fetchNotes={fetchNotes}
           />
           {showDeleteAlert && (
             <DeleteAlert
-              //selectedNoteIds={selectedNoteIds}
-              onClose={() => setShowDeleteAlert(false)}
-              //refetch={fetchNotes}
+              setShowDeleteAlert={setShowDeleteAlert}
+              onClose={() => {
+                setShowDeleteAlert(false);
+              }}
             />
           )}
         </Container>
