@@ -10,7 +10,7 @@ const NotesMenuBar = () => {
   const [isSearchCollapsed, setIsSearchCollapsed] = useState(true);
 
   return (
-    <div className="flex">
+    <div className="flex w-auto">
       <MenuBar
         showMenu={true}
         title={
@@ -76,6 +76,9 @@ const NotesMenuBar = () => {
         <MenuBar.Block label="Finance" count={60} />
         <MenuBar.Block label="User Experience" count={60} />
       </MenuBar>
+      {/* <div className="flex flex-col border border-black items-start justify-start h-screen">
+        <Notes/>
+      </div> */}
     </div>
   );
 };

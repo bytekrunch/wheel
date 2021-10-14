@@ -7,7 +7,7 @@ import * as yup from "yup";
 
 import notesApi from "apis/notes";
 
-export default function NewNoteForm({ onClose, refetch }) {
+export default function NewContactForm({ onClose, refetch }) {
   const handleSubmit = async values => {
     try {
       await notesApi.create(values);

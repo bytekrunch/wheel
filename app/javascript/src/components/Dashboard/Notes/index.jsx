@@ -6,10 +6,11 @@ import { PageLoader } from "neetoui";
 import { Input } from "neetoui/v2";
 import { Button } from "neetoui/v2";
 import { Header } from "neetoui/v2/layouts";
-import { BrowserRouter } from "react-router-dom";
+import { Container } from "neetoui/v2/layouts";
 
 import notesApi from "apis/notes";
 import EmptyState from "components/Common/EmptyState";
+import NotesMenuBar from "components/Common/Navbar/Menubar";
 
 import NoteCard from "./Card";
 import DeleteAlert from "./DeleteAlert";
@@ -45,50 +46,40 @@ const Notes = () => {
 
   return (
     <>
-      {/* <Header
-        title="Notes"
-        actionBlock={
-          <Button
-            onClick={() => setShowNewNotePane(true)}
-            label="Add New Note"
-            icon="ri-add-line"
-          />
-        }
-      /> */}
-
-      <BrowserRouter>
-        <Header
-          className="px-3"
-          actionBlock={
-            <>
-              <Input
-                placeholder="Search name, Email, Phone Number etc"
-                className="flex flex-row w-72 h-8 m-2"
-                size="small"
-                prefix={<Search size={16} />}
-              />
+      <div className="flex w-full">
+        <NotesMenuBar />
+        <Container>
+          <Header
+            className="px-3"
+            actionBlock={
+              <>
+                <Input
+                  placeholder="Search name, Email, Phone Number etc"
+                  className="flex flex-row w-72 h-8 m-2"
+                  size="small"
+                  prefix={<Search size={16} />}
+                />
+                <Button
+                  ClassName="mr-3 h-8"
+                  label="Add Note +"
+                  onClick={() => setShowNewNotePane(true)}
+                />
+              </>
+            }
+            menuBarHandle={
               <Button
-                ClassName="mr-3 h-8"
-                label="Add Note +"
-                onClick={() => setShowNewNotePane(true)}
+                icon={function noRefCheck() {
+                  return <BurgerMenu />;
+                }}
+                style="text"
               />
-            </>
-          }
-          menuBarHandle={
-            <Button
-              icon={function noRefCheck() {
-                return <BurgerMenu />;
-              }}
-              style="text"
-            />
-          }
-          title="All Notes"
-        />
-      </BrowserRouter>
+            }
+            title="All Notes"
+          />
 
-      {notes.length ? (
-        <>
-          {/* <SubHeader
+          {notes.length ? (
+            <>
+              {/* <SubHeader
             searchProps={{
               value: searchTerm,
               onChange: e => setSearchTerm(e.target.value),
@@ -99,34 +90,36 @@ const Notes = () => {
               disabled: !selectedNoteIds.length
             }}
           /> */}
-          <NoteCard
-            selectedNoteIds={selectedNoteIds}
-            setSelectedNoteIds={setSelectedNoteIds}
-            notes={notes}
-            setShowDeleteAlert={setShowDeleteAlert}
+              <NoteCard
+                selectedNoteIds={selectedNoteIds}
+                setSelectedNoteIds={setSelectedNoteIds}
+                notes={notes}
+                setShowDeleteAlert={setShowDeleteAlert}
+              />
+            </>
+          ) : (
+            <EmptyState
+              image={EmptyNotesListImage}
+              title="Looks like you don't have any notes!"
+              subtitle="Add your notes to send customized emails to them."
+              primaryAction={() => setShowNewNotePane(true)}
+              primaryActionLabel="Add New Note"
+            />
+          )}
+          <NewNotePane
+            showPane={showNewNotePane}
+            setShowPane={setShowNewNotePane}
+            fetchNotes={fetchNotes}
           />
-        </>
-      ) : (
-        <EmptyState
-          image={EmptyNotesListImage}
-          title="Looks like you don't have any notes!"
-          subtitle="Add your notes to send customized emails to them."
-          primaryAction={() => setShowNewNotePane(true)}
-          primaryActionLabel="Add New Note"
-        />
-      )}
-      <NewNotePane
-        showPane={showNewNotePane}
-        setShowPane={setShowNewNotePane}
-        fetchNotes={fetchNotes}
-      />
-      {showDeleteAlert && (
-        <DeleteAlert
-          selectedNoteIds={selectedNoteIds}
-          onClose={() => setShowDeleteAlert(false)}
-          refetch={fetchNotes}
-        />
-      )}
+          {showDeleteAlert && (
+            <DeleteAlert
+              selectedNoteIds={selectedNoteIds}
+              onClose={() => setShowDeleteAlert(false)}
+              refetch={fetchNotes}
+            />
+          )}
+        </Container>
+      </div>
     </>
   );
 };
