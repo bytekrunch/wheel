@@ -16,7 +16,7 @@ import NewContactPane from "./NewContactPane";
 
 const Contacts = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [showNewNotePane, setShowNewNotePane] = useState(false);
+  const [showNewContactPane, setShowNewContactPane] = useState(false);
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [showMenuBar, setShowMenuBar] = useState(true);
 
@@ -47,7 +47,7 @@ const Contacts = () => {
                 <Button
                   ClassName="mr-3 h-8"
                   label="Add Contact +"
-                  onClick={() => setShowNewNotePane(true)}
+                  onClick={() => setShowNewContactPane(true)}
                 />
               </>
             }
@@ -191,8 +191,8 @@ const Contacts = () => {
           </div>
 
           <NewContactPane
-            showPane={showNewNotePane}
-            setShowPane={setShowNewNotePane}
+            showPane={showNewContactPane}
+            setShowPane={setShowNewContactPane}
           />
           {showDeleteAlert && (
             <DeleteAlert
