@@ -16,4 +16,27 @@ const INITIAL_NOTES = [
   }
 ];
 
-export { INITIAL_NOTES };
+const ASSIGNED_CONTACT = [
+  {
+    label: "Value One",
+    value: "value1"
+  },
+  {
+    label: "Value Two",
+    value: "value2"
+  },
+  {
+    label: "Value Three",
+    value: "value3"
+  },
+  {
+    label: "Value Four",
+    value: "value4"
+  },
+  {
+    label: "Value Five",
+    value: "value5"
+  }
+];
+
+export { INITIAL_NOTES, ASSIGNED_CONTACT };

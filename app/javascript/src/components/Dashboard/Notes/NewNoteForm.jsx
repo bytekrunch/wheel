@@ -7,6 +7,8 @@ import * as yup from "yup";
 
 import notesApi from "apis/notes";
 
+import { ASSIGNED_CONTACT } from "./Constants";
+
 export default function NewNoteForm({ onClose, refetch }) {
   const handleSubmit = async values => {
     try {
@@ -51,29 +53,8 @@ export default function NewNoteForm({ onClose, refetch }) {
               isSearchable
               required={true}
               label="Assigned Contact"
-              name="role"
-              options={[
-                {
-                  label: "Value One",
-                  value: "value1"
-                },
-                {
-                  label: "Value Two",
-                  value: "value2"
-                },
-                {
-                  label: "Value Three",
-                  value: "value3"
-                },
-                {
-                  label: "Value Four",
-                  value: "value4"
-                },
-                {
-                  label: "Value Five",
-                  value: "value5"
-                }
-              ]}
+              name="assignedContact"
+              options={ASSIGNED_CONTACT}
               placeholder="Select a Role"
             />
           </div>
