@@ -1,38 +1,100 @@
 import React from "react";
 
 import { Check } from "@bigbinary/neeto-icons";
+import { Formik, Form } from "formik";
 import { Button, Pane, Typography } from "neetoui/v2";
 import { Toastr } from "neetoui/v2";
+import { Input, Select } from "neetoui/v2/formik";
+import * as yup from "yup";
 
-import NewContactForm from "./NewContactForm";
+import { ROLE } from "./Constants";
 
-export default function NewContactPane({ fetchNotes, showPane, setShowPane }) {
+export default function NewContactPane({ showPane, setShowPane }) {
   const onClose = () => setShowPane(false);
+  const handleSubmit = async () => {
+    try {
+      setShowPane(false);
+      Toastr.success("Contact added Successfully");
+      onClose();
+    } catch (err) {
+      logger.error(err);
+    }
+  };
   return (
-    <Pane title="Add New Note" isOpen={showPane} onClose={onClose}>
+    <Pane title="Add New Contact" isOpen={showPane} onClose={onClose}>
       <Pane.Header>
-        <Typography style="h2">Add New Note</Typography>
+        <Typography style="h2">Add New Contact</Typography>
       </Pane.Header>
-      <Pane.Body>
-        <div>
-          <NewContactForm onClose={onClose} refetch={fetchNotes} />
-        </div>
-      </Pane.Body>
-      <Pane.Footer className="flex space-x-4">
-        <Button
-          icon={Check}
-          label="Save Changes"
-          onClick={() => {
-            Toastr.success("Contact added Successfully");
-            setShowPane(false);
-          }}
-        />
-        <Button
-          style="text"
-          label="Cancel"
-          onClick={() => setShowPane(false)}
-        />
-      </Pane.Footer>
+      <Formik
+        initialValues={{
+          firstName: "",
+          lastName: ""
+        }}
+        onSubmit={handleSubmit}
+        validationSchema={yup.object({
+          firstName: yup.string().required("First Name is required"),
+          lastName: yup.string().required("Last Name is required"),
+          email: yup.string().email().required("Email is required"),
+          role: yup
+            .object({
+              label: yup.string(),
+              value: yup.string()
+            })
+            .required("Role is required")
+        })}
+      >
+        <Form>
+          <Pane.Body>
+            <div>
+              <div className="flex space-x-2">
+                <Input
+                  label="First Name"
+                  name="firstName"
+                  className="mb-6"
+                  required={true}
+                  placeholder="Enter First Name"
+                />
+                <Input
+                  label="Last Name"
+                  name="lastName"
+                  className="mb-6"
+                  required={true}
+                  placeholder="Enter Last Name"
+                />
+              </div>
+
+              <Input
+                label="Email"
+                name="email"
+                className="mb-6"
+                required={true}
+                placeholder="Enter Email"
+              />
+
+              <div className="my-6">
+                <Select
+                  isClearable
+                  isSearchable
+                  required={true}
+                  label="Role"
+                  name="role"
+                  options={ROLE}
+                  placeholder="Select Role"
+                />
+              </div>
+              <div className="nui-pane__footer nui-pane__footer--absolute"></div>
+            </div>
+          </Pane.Body>
+          <Pane.Footer className="flex space-x-4">
+            <Button icon={Check} type="submit" label="Save Changes" />
+            <Button
+              style="text"
+              label="Cancel"
+              onClick={() => setShowPane(false)}
+            />
+          </Pane.Footer>
+        </Form>
+      </Formik>
     </Pane>
   );
 }

@@ -1,42 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import { Search, BurgerMenu } from "@bigbinary/neeto-icons";
 import EmptyNotesListImage from "images/EmptyNotesList";
 import { PageLoader } from "neetoui";
-import { Input } from "neetoui/v2";
-import { Button } from "neetoui/v2";
+import { Button, Input } from "neetoui/v2";
 import { Header } from "neetoui/v2/layouts";
 import { Container } from "neetoui/v2/layouts";
 
-import notesApi from "apis/notes";
 import EmptyState from "components/Common/EmptyState";
 import NotesMenuBar from "components/Common/Navbar/Menubar";
 
 import NoteCard from "./Card";
+import { INITIAL_NOTES } from "./Constants";
 import DeleteAlert from "./DeleteAlert";
 import NewNotePane from "./NewNotePane";
 
 const Notes = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [showNewNotePane, setShowNewNotePane] = useState(false);
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [selectedNoteIds, setSelectedNoteIds] = useState([]);
-  const [notes, setNotes] = useState([]);
-
-  useEffect(() => {
-    fetchNotes();
-  }, []);
+  const [notes, setNotes] = useState(INITIAL_NOTES);
+  const [showMenuBar, setShowMenuBar] = useState(true);
 
   const fetchNotes = async () => {
     try {
       setLoading(true);
-      const response = await notesApi.fetch();
-      setNotes(response.data.notes);
+      const previousNotes = [...notes];
+      const newnotes = previousNotes.filter(
+        note => !selectedNoteIds.includes(note.id)
+      );
+      setNotes(newnotes);
     } catch (error) {
       logger.error(error);
     } finally {
       setLoading(false);
     }
+  };
+
+  const newNotes = async values => {
+    values["id"] = notes.length + 1;
+    setNotes([...notes, values]);
+    setShowNewNotePane(false);
   };
 
   if (loading) {
@@ -46,7 +51,7 @@ const Notes = () => {
   return (
     <>
       <div className="flex w-full">
-        <NotesMenuBar />
+        {showMenuBar ? <NotesMenuBar /> : null}
         <Container>
           <Header
             className="px-3"
@@ -67,6 +72,9 @@ const Notes = () => {
             }
             menuBarHandle={
               <Button
+                onClick={() => {
+                  setShowMenuBar(showMenuBar => !showMenuBar);
+                }}
                 icon={function noRefCheck() {
                   return <BurgerMenu />;
                 }}
@@ -78,17 +86,6 @@ const Notes = () => {
 
           {notes.length ? (
             <>
-              {/* <SubHeader
-            searchProps={{
-              value: searchTerm,
-              onChange: e => setSearchTerm(e.target.value),
-              clear: () => setSearchTerm("")
-            }}
-            deleteButtonProps={{
-              onClick: () => setShowDeleteAlert(true),
-              disabled: !selectedNoteIds.length
-            }}
-          /> */}
               <NoteCard
                 selectedNoteIds={selectedNoteIds}
                 setSelectedNoteIds={setSelectedNoteIds}
@@ -108,7 +105,7 @@ const Notes = () => {
           <NewNotePane
             showPane={showNewNotePane}
             setShowPane={setShowNewNotePane}
-            fetchNotes={fetchNotes}
+            newNotes={newNotes}
           />
           {showDeleteAlert && (
             <DeleteAlert

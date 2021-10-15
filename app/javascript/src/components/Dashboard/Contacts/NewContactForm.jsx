@@ -7,6 +7,8 @@ import * as yup from "yup";
 
 import notesApi from "apis/notes";
 
+import { ROLE } from "./Constants";
+
 export default function NewContactForm({ onClose, refetch }) {
   const handleSubmit = async values => {
     try {
@@ -70,20 +72,7 @@ export default function NewContactForm({ onClose, refetch }) {
               required={true}
               label="Role"
               name="role"
-              options={[
-                {
-                  label: "Owner",
-                  value: "Getting Started"
-                },
-                {
-                  label: "CEO",
-                  value: "Tag Two"
-                },
-                {
-                  label: "Director",
-                  value: "Tag Three"
-                }
-              ]}
+              options={ROLE}
               placeholder="Select Role"
             />
           </div>

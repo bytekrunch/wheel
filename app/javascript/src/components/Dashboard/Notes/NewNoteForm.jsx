@@ -1,11 +1,13 @@
 import React from "react";
 
 import { Formik, Form } from "formik";
-import { Select, Tag } from "neetoui/v2";
+import { Select } from "neetoui/v2/formik";
 import { Input, Textarea } from "neetoui/v2/formik";
 import * as yup from "yup";
 
 import notesApi from "apis/notes";
+
+import { ASSIGNED_CONTACT, TAGS } from "./Constants";
 
 export default function NewNoteForm({ onClose, refetch }) {
   const handleSubmit = async values => {
@@ -26,7 +28,14 @@ export default function NewNoteForm({ onClose, refetch }) {
       onSubmit={handleSubmit}
       validationSchema={yup.object({
         title: yup.string().required("Title is required"),
-        description: yup.string().required("Description is required")
+        description: yup.string().required("Description is required"),
+        role: yup
+          .object({
+            label: yup.string(),
+            value: yup.string()
+          })
+          .required("Role required"),
+        tags: yup.array().min(1).required("Tag required")
       })}
     >
       {() => (
@@ -51,29 +60,8 @@ export default function NewNoteForm({ onClose, refetch }) {
               isSearchable
               required={true}
               label="Assigned Contact"
-              name="role"
-              options={[
-                {
-                  label: "Value One",
-                  value: "value1"
-                },
-                {
-                  label: "Value Two",
-                  value: "value2"
-                },
-                {
-                  label: "Value Three",
-                  value: "value3"
-                },
-                {
-                  label: "Value Four",
-                  value: "value4"
-                },
-                {
-                  label: "Value Five",
-                  value: "value5"
-                }
-              ]}
+              name="assignedContact"
+              options={ASSIGNED_CONTACT}
               placeholder="Select a Role"
             />
           </div>
@@ -85,22 +73,7 @@ export default function NewNoteForm({ onClose, refetch }) {
               isMulti
               label="Tags"
               name="tags"
-              options={[
-                {
-                  label: (
-                    <Tag color="green" label="Getting Started" size="small" />
-                  ),
-                  value: "Getting Started"
-                },
-                {
-                  label: <Tag color="blue" label="Tag Two" size="small" />,
-                  value: "Tag Two"
-                },
-                {
-                  label: <Tag color="red" label="Tag Three" size="small" />,
-                  value: "Tag Three"
-                }
-              ]}
+              options={TAGS}
               placeholder="Select Role"
             />
           </div>

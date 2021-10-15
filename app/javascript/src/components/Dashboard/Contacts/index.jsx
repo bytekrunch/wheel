@@ -16,10 +16,9 @@ import NewContactPane from "./NewContactPane";
 
 const Contacts = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [showNewNotePane, setShowNewNotePane] = useState(false);
+  const [showNewContactPane, setShowNewContactPane] = useState(false);
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
-  //const [searchTerm, setSearchTerm] = useState("");
-  //const [selectedNoteIds, setSelectedNoteIds] = useState([]);
+  const [showMenuBar, setShowMenuBar] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
@@ -34,7 +33,7 @@ const Contacts = () => {
   return (
     <>
       <div className="flex w-full">
-        <ContactsMenuBar />
+        {showMenuBar ? <ContactsMenuBar /> : null}
         <Container>
           <Header
             actionBlock={
@@ -48,12 +47,15 @@ const Contacts = () => {
                 <Button
                   ClassName="mr-3 h-8"
                   label="Add Contact +"
-                  onClick={() => setShowNewNotePane(true)}
+                  onClick={() => setShowNewContactPane(true)}
                 />
               </>
             }
             menuBarHandle={
               <Button
+                onClick={() => {
+                  setShowMenuBar(showMenuBar => !showMenuBar);
+                }}
                 icon={function noRefCheck() {
                   return <BurgerMenu />;
                 }}
@@ -189,8 +191,8 @@ const Contacts = () => {
           </div>
 
           <NewContactPane
-            showPane={showNewNotePane}
-            setShowPane={setShowNewNotePane}
+            showPane={showNewContactPane}
+            setShowPane={setShowNewContactPane}
           />
           {showDeleteAlert && (
             <DeleteAlert
