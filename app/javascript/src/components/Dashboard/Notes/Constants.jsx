@@ -39,4 +39,31 @@ const ASSIGNED_CONTACT = [
   }
 ];
 
-export { INITIAL_NOTES, ASSIGNED_CONTACT };
+const TAGS = [
+  {
+    label: "Getting Started",
+    value: "Getting Started"
+  },
+  {
+    label: "OnBoarding",
+    value: "OnBoarding"
+  },
+  {
+    label: "User Flow",
+    value: "User Flow"
+  },
+  {
+    label: "UX",
+    value: "UX"
+  },
+  {
+    label: "Bugs",
+    value: "Bugs"
+  },
+  {
+    label: "V2",
+    value: "V2"
+  }
+];
+
+export { INITIAL_NOTES, ASSIGNED_CONTACT, TAGS };

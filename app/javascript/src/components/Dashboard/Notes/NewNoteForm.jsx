@@ -1,13 +1,13 @@
 import React from "react";
 
 import { Formik, Form } from "formik";
-import { Select, Tag } from "neetoui/v2";
+import { Select } from "neetoui/v2";
 import { Input, Textarea } from "neetoui/v2/formik";
 import * as yup from "yup";
 
 import notesApi from "apis/notes";
 
-import { ASSIGNED_CONTACT } from "./Constants";
+import { ASSIGNED_CONTACT, TAGS } from "./Constants";
 
 export default function NewNoteForm({ onClose, refetch }) {
   const handleSubmit = async values => {
@@ -66,22 +66,7 @@ export default function NewNoteForm({ onClose, refetch }) {
               isMulti
               label="Tags"
               name="tags"
-              options={[
-                {
-                  label: (
-                    <Tag color="green" label="Getting Started" size="small" />
-                  ),
-                  value: "Getting Started"
-                },
-                {
-                  label: <Tag color="blue" label="Tag Two" size="small" />,
-                  value: "Tag Two"
-                },
-                {
-                  label: <Tag color="red" label="Tag Three" size="small" />,
-                  value: "Tag Three"
-                }
-              ]}
+              options={TAGS}
               placeholder="Select Role"
             />
           </div>
