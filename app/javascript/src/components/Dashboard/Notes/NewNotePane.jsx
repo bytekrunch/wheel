@@ -24,7 +24,7 @@ export default function NewNotePane({ newNotes, showPane, setShowPane }) {
   return (
     <Pane isOpen={showPane} onClose={onClose}>
       <Pane.Header>
-        <Typography>Add New Note</Typography>
+        <Typography style="h2">Add New Note</Typography>
       </Pane.Header>
       <Formik
         initialValues={{
