@@ -17,7 +17,7 @@ export default function NoteCard({
         <div
           key={note.id}
           className={
-            "cursor-pointer my-1  bg-white border neeto-ui-bd-gray-300 p-4 neeto-ui-shadow-s  w-full  hover:bg-gray-50 "
+            "cursor-pointer my-1  bg-white border neeto-ui-bd-gray-300 p-4 neeto-ui-shadow-s  w-full hover:bg-gray-50 "
           }
         >
           <div className="border-b-2 relative">

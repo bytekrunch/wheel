@@ -1,3 +1,9 @@
+// const INITIAL_VALUES_FORM = {
+//   title: "",
+//   description: "",
+
+// };
+
 const INITIAL_NOTES = [
   {
     id: 1,

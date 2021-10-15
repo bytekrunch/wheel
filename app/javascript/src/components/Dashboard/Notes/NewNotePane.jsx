@@ -7,27 +7,32 @@ import { Toastr } from "neetoui/v2";
 import { Input, Select } from "neetoui/v2/formik";
 import * as yup from "yup";
 
-import { ASSIGNED_CONTACT, TAGS, INITIAL_NOTES } from "./Constants";
+import { ASSIGNED_CONTACT, TAGS } from "./Constants";
 
-export default function NewNotePane({ showPane, setShowPane }) {
+export default function NewNotePane({ newNotes, showPane, setShowPane }) {
   const onClose = () => setShowPane(false);
-  const handleSubmit = async () => {
+
+  const handleSubmit = async values => {
     try {
-      Toastr.success("Note Added Successfully");
+      newNotes(values);
       setShowPane(!showPane);
-      onClose();
+      Toastr.success("Note Added Successfully");
     } catch (err) {
       logger.error(err);
     }
   };
   return (
-    //
     <Pane isOpen={showPane} onClose={onClose}>
       <Pane.Header>
         <Typography>Add New Note</Typography>
       </Pane.Header>
       <Formik
-        initialValues={INITIAL_NOTES}
+        initialValues={{
+          title: "",
+          description: "",
+          tags: [],
+          assignedContact: {}
+        }}
         onSubmit={handleSubmit}
         validationSchema={yup.object({
           title: yup.string().required("Title is required"),
@@ -38,59 +43,59 @@ export default function NewNotePane({ showPane, setShowPane }) {
               value: yup.string()
             })
             .required("Role required"),
-          tags: yup.array().min(1).required("Tag required")
+          tags: yup.array().min(1).required("Tag is required")
         })}
       >
-        {({ isSubmitting }) => (
-          <Form className="w-full">
-            <Pane.Body>
-              <div className="w-full space-y-6">
-                <Input
-                  label="Title"
-                  name="title"
-                  placeholder="Enter Title"
-                  required={true}
-                />
-                <Input
-                  label="Description"
-                  name="description"
-                  placeholder="Enter Description"
-                  size="large"
-                  required={true}
-                />
-                <Select
-                  isClearable
-                  isSearchable
-                  required={true}
-                  label="Assigned Contact"
-                  name="role"
-                  options={ASSIGNED_CONTACT}
-                  placeholder="Select a Role"
-                />
-                <Select
-                  isClearable
-                  isSearchable
-                  required={true}
-                  isMulti
-                  label="Tags"
-                  name="tags"
-                  options={TAGS}
-                  placeholder="Select Tags"
-                />
-              </div>
-            </Pane.Body>
-            <Pane.Footer className="flex space-x-4">
-              <Button
-                icon={Check}
-                label="Save Changes"
-                type="submit"
-                disabled={isSubmitting}
-                loading={isSubmitting}
+        <Form className="w-full">
+          <Pane.Body>
+            <div className="w-full space-y-6">
+              <Input
+                label="Title"
+                name="title"
+                className="mb-6"
+                placeholder="Enter Title"
+                required={true}
               />
-              <Button style="text" label="Cancel" onClick={onClose} />
-            </Pane.Footer>
-          </Form>
-        )}
+              <Input
+                label="Description"
+                name="description"
+                className="mb-6"
+                placeholder="Enter Description"
+                size="large"
+                required={true}
+              />
+              <Select
+                isClearable
+                isSearchable
+                label="Assigned Contact"
+                name="assignedContact"
+                options={ASSIGNED_CONTACT}
+                placeholder="Select a Role"
+              />
+              <Select
+                isClearable
+                isSearchable
+                required={true}
+                isMulti
+                label="Tags"
+                name="tags"
+                options={TAGS}
+                placeholder="Select Tags"
+              />
+            </div>
+          </Pane.Body>
+          <Pane.Footer className="flex space-x-4">
+            <Button
+              // onClick = {newNotes}
+              icon={Check}
+              label="Save Changes"
+              type="submit"
+              // disabled={isSubmitting}
+              // loading={isSubmitting}
+            />
+            <Button style="text" label="Cancel" onClick={onClose} />
+          </Pane.Footer>
+        </Form>
       </Formik>
     </Pane>
   );

@@ -26,7 +26,6 @@ const Notes = () => {
   const fetchNotes = async () => {
     try {
       setLoading(true);
-      // const response = await notesApi.fetch();
       const previousNotes = [...notes];
       const newnotes = previousNotes.filter(
         note => !selectedNoteIds.includes(note.id)
@@ -37,6 +36,12 @@ const Notes = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const newNotes = async values => {
+    values["id"] = notes.length + 1;
+    setNotes([...notes, values]);
+    setShowNewNotePane(false);
   };
 
   if (loading) {
@@ -100,7 +105,7 @@ const Notes = () => {
           <NewNotePane
             showPane={showNewNotePane}
             setShowPane={setShowNewNotePane}
-            fetchNotes={fetchNotes}
+            newNotes={newNotes}
           />
           {showDeleteAlert && (
             <DeleteAlert
