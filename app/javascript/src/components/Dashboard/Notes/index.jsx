@@ -10,10 +10,10 @@ import { Container } from "neetoui/v2/layouts";
 import EmptyState from "components/Common/EmptyState";
 import NotesMenuBar from "components/Common/Navbar/Menubar";
 
-import NoteCard from "./Card";
 import { INITIAL_NOTES } from "./Constants";
 import DeleteAlert from "./DeleteAlert";
 import NewNotePane from "./NewNotePane";
+import NoteCard from "./NoteCard";
 
 const Notes = () => {
   const [loading, setLoading] = useState(false);
