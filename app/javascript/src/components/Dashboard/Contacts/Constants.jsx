@@ -1,15 +1,15 @@
 const ROLE = [
   {
     label: "Owner",
-    value: "Getting Started"
+    value: "Owner"
   },
   {
     label: "CEO",
-    value: "Tag Two"
+    value: "CEO"
   },
   {
     label: "Director",
-    value: "Tag Three"
+    value: "Director"
   }
 ];
 

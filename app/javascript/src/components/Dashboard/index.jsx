@@ -13,10 +13,8 @@ const Home = () => {
   return (
     <div className="flex h-screen">
       <Navbar />
-      <div className="flex flex-col items-start justify-start border flex-grow h-screen overflow-y-auto w-auto">
+      <div className="flex flex-col items-start justify-start flex-grow h-screen overflow-y-auto">
         <Switch>
-          {/* <Route exact path="/" component={Notes} />  */}
-          {/* <Route exact path="/contacts/details" component={Contacts} */}
           <Route exact path="/notes" component={Notes} />
           <Route exact path="/contacts" component={Contacts} />
           <Route exact path="/my/password/edit" component={PasswordEdit} />

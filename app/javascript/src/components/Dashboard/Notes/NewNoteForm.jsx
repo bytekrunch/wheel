@@ -28,7 +28,14 @@ export default function NewNoteForm({ onClose, refetch }) {
       onSubmit={handleSubmit}
       validationSchema={yup.object({
         title: yup.string().required("Title is required"),
-        description: yup.string().required("Description is required")
+        description: yup.string().required("Description is required"),
+        role: yup
+          .object({
+            label: yup.string(),
+            value: yup.string()
+          })
+          .required("Role required"),
+        tags: yup.array().min(1).required("Tag required")
       })}
     >
       {() => (
