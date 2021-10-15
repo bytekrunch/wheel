@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Formik, Form } from "formik";
-import { Select } from "neetoui/v2";
+import { Select } from "neetoui/v2/formik";
 import { Input, Textarea } from "neetoui/v2/formik";
 import * as yup from "yup";
 
