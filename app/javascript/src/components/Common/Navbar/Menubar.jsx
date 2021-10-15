@@ -10,7 +10,6 @@ const NotesMenuBar = () => {
   const [isSearchCollapsed, setIsSearchCollapsed] = useState(true);
 
   return (
-    // <div className="flex w-auto">
     <MenuBar
       showMenu={true}
       title={

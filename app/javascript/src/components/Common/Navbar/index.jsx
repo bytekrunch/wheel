@@ -40,11 +40,9 @@ const NavBar = () => {
           dropdownProps: [
             {
               label: "Edit"
-              //onClick: function noRefCheck(){}
             },
             {
               label: "Logout"
-              //onClick: function noRefCheck(){}
             }
           ],
           email: "kieranmiller@gmail.com",
