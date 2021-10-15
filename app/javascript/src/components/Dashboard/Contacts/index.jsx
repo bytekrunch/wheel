@@ -18,8 +18,7 @@ const Contacts = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showNewNotePane, setShowNewNotePane] = useState(false);
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
-  //const [searchTerm, setSearchTerm] = useState("");
-  //const [selectedNoteIds, setSelectedNoteIds] = useState([]);
+  const [showMenuBar, setShowMenuBar] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
@@ -34,7 +33,7 @@ const Contacts = () => {
   return (
     <>
       <div className="flex w-full">
-        <ContactsMenuBar />
+        {showMenuBar ? <ContactsMenuBar /> : null}
         <Container>
           <Header
             actionBlock={
@@ -54,6 +53,9 @@ const Contacts = () => {
             }
             menuBarHandle={
               <Button
+                onClick={() => {
+                  setShowMenuBar(showMenuBar => !showMenuBar);
+                }}
                 icon={function noRefCheck() {
                   return <BurgerMenu />;
                 }}

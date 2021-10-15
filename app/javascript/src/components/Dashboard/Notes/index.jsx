@@ -22,6 +22,7 @@ const Notes = () => {
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [selectedNoteIds, setSelectedNoteIds] = useState([]);
   const [notes, setNotes] = useState([]);
+  const [showMenuBar, setShowMenuBar] = useState(true);
 
   useEffect(() => {
     fetchNotes();
@@ -46,7 +47,7 @@ const Notes = () => {
   return (
     <>
       <div className="flex w-full">
-        <NotesMenuBar />
+        {showMenuBar ? <NotesMenuBar /> : null}
         <Container>
           <Header
             className="px-3"
@@ -67,6 +68,9 @@ const Notes = () => {
             }
             menuBarHandle={
               <Button
+                onClick={() => {
+                  setShowMenuBar(showMenuBar => !showMenuBar);
+                }}
                 icon={function noRefCheck() {
                   return <BurgerMenu />;
                 }}
