@@ -85,14 +85,7 @@ export default function NewNotePane({ newNotes, showPane, setShowPane }) {
             </div>
           </Pane.Body>
           <Pane.Footer className="flex space-x-4">
-            <Button
-              // onClick = {newNotes}
-              icon={Check}
-              label="Save Changes"
-              type="submit"
-              // disabled={isSubmitting}
-              // loading={isSubmitting}
-            />
+            <Button icon={Check} label="Save Changes" type="submit" />
             <Button style="text" label="Cancel" onClick={onClose} />
           </Pane.Footer>
         </Form>

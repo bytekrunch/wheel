@@ -3,14 +3,12 @@ import React, { useState, useEffect } from "react";
 import { Search, BurgerMenu, MenuHorizontal } from "@bigbinary/neeto-icons";
 import { PageLoader } from "neetoui";
 import { Button, Pagination, Dropdown, Checkbox, Avatar } from "neetoui/v2";
-//import EmptyNotesListImage from "images/EmptyNotesList";
 import { Input, Typography } from "neetoui/v2";
 import { Header } from "neetoui/v2/layouts";
 import { Container } from "neetoui/v2/layouts";
 
 import ContactsMenuBar from "components/Common/Navbar/ContactsMenuBar";
 
-//import EmptyState from "components/Common/EmptyState";
 import DeleteAlert from "./DeleteAlert";
 import NewContactPane from "./NewContactPane";
 
