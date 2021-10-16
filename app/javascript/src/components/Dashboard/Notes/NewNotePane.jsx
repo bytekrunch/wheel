@@ -30,19 +30,19 @@ export default function NewNotePane({ newNotes, showPane, setShowPane }) {
         initialValues={{
           title: "",
           description: "",
-          tags: [],
-          assignedContact: {}
+          assignedContact: {},
+          tags: []
         }}
         onSubmit={handleSubmit}
         validationSchema={yup.object({
           title: yup.string().required("Title is required"),
           description: yup.string().required("Description is required"),
-          role: yup
+          assignedContact: yup
             .object({
               label: yup.string(),
               value: yup.string()
             })
-            .required("Role required"),
+            .required("Assigned contact is required"),
           tags: yup.array().min(1).required("Tag is required")
         })}
       >

@@ -81,7 +81,7 @@ const Contacts = () => {
                 </tr>
               </thead>
               <tbody>
-                {Array(3)
+                {Array(4)
                   .fill()
                   .map((_, index) => (
                     <React.Fragment key={index}>
