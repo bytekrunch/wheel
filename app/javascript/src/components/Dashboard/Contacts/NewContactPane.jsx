@@ -5,9 +5,8 @@ import { Formik, Form } from "formik";
 import { Button, Pane, Typography } from "neetoui/v2";
 import { Toastr } from "neetoui/v2";
 import { Input, Select } from "neetoui/v2/formik";
-import * as yup from "yup";
 
-import { ROLE } from "./Constants";
+import { ROLE, VALIDATION_SCHEMA, INITIAL_VALUES } from "./Constants";
 
 export default function NewContactPane({ showPane, setShowPane }) {
   const onClose = () => setShowPane(false);
@@ -26,22 +25,9 @@ export default function NewContactPane({ showPane, setShowPane }) {
         <Typography style="h2">Add New Contact</Typography>
       </Pane.Header>
       <Formik
-        initialValues={{
-          firstName: "",
-          lastName: ""
-        }}
+        initialValues={INITIAL_VALUES}
         onSubmit={handleSubmit}
-        validationSchema={yup.object({
-          firstName: yup.string().required("First Name is required"),
-          lastName: yup.string().required("Last Name is required"),
-          email: yup.string().email().required("Email is required"),
-          role: yup
-            .object({
-              label: yup.string(),
-              value: yup.string()
-            })
-            .required("Role is required")
-        })}
+        validationSchema={VALIDATION_SCHEMA}
       >
         <Form>
           <Pane.Body>

@@ -27,7 +27,11 @@ const ContactsMenuBar = () => {
         iconProps={[
           {
             icon: () => <Search size={20} />,
-            onClick: () => setIsSearchCollapsed(!isSearchCollapsed)
+            onClick: () => {
+              setIsSearchCollapsed(isSearchCollapsed => !isSearchCollapsed);
+              //setIsSearchCollapsed(!isSearchCollapsed)
+            }
+            //setIsSearchCollapsed(isSearchCollapsed => !isSearchCollapsed)
           }
         ]}
       >
