@@ -1,9 +1,7 @@
 import React from "react";
 
 import { Clock, MenuVertical } from "@bigbinary/neeto-icons";
-import { Tag } from "neetoui/v2";
-import { Avatar, Tooltip } from "neetoui/v2";
-import { Typography, Dropdown } from "neetoui/v2";
+import { Avatar, Tooltip, Tag, Typography, Dropdown } from "neetoui/v2";
 
 export default function NoteCard({
   selectedNoteIds,

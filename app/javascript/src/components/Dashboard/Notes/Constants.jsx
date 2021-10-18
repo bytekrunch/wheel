@@ -1,3 +1,5 @@
+import * as yup from "yup";
+
 const INITIAL_NOTES = [
   {
     id: 1,
@@ -66,4 +68,29 @@ const TAGS = [
   }
 ];
 
-export { INITIAL_NOTES, ASSIGNED_CONTACT, TAGS };
+const INITIAL_VALUES = {
+  title: "",
+  description: "",
+  assignedContact: {},
+  tags: []
+};
+
+const VALIDATION_SCHEMA = yup.object({
+  title: yup.string().required("Title is required"),
+  description: yup.string().required("Description is required"),
+  assignedContact: yup
+    .object({
+      label: yup.string(),
+      value: yup.string()
+    })
+    .required("Assigned contact is required"),
+  tags: yup.array().min(1).required("Tag is required")
+});
+
+export {
+  INITIAL_NOTES,
+  ASSIGNED_CONTACT,
+  TAGS,
+  INITIAL_VALUES,
+  VALIDATION_SCHEMA
+};

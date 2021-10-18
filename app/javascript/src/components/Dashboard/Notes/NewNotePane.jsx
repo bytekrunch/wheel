@@ -2,12 +2,15 @@ import React from "react";
 
 import { Check } from "@bigbinary/neeto-icons";
 import { Formik, Form } from "formik";
-import { Button, Pane, Typography } from "neetoui/v2";
-import { Toastr } from "neetoui/v2";
+import { Button, Pane, Typography, Toastr } from "neetoui/v2";
 import { Input, Select } from "neetoui/v2/formik";
-import * as yup from "yup";
 
-import { ASSIGNED_CONTACT, TAGS } from "./Constants";
+import {
+  ASSIGNED_CONTACT,
+  TAGS,
+  INITIAL_VALUES,
+  VALIDATION_SCHEMA
+} from "./Constants";
 
 export default function NewNotePane({ newNotes, showPane, setShowPane }) {
   const onClose = () => setShowPane(false);
@@ -27,24 +30,9 @@ export default function NewNotePane({ newNotes, showPane, setShowPane }) {
         <Typography style="h2">Add New Note</Typography>
       </Pane.Header>
       <Formik
-        initialValues={{
-          title: "",
-          description: "",
-          assignedContact: {},
-          tags: []
-        }}
+        initialValues={INITIAL_VALUES}
         onSubmit={handleSubmit}
-        validationSchema={yup.object({
-          title: yup.string().required("Title is required"),
-          description: yup.string().required("Description is required"),
-          assignedContact: yup
-            .object({
-              label: yup.string(),
-              value: yup.string()
-            })
-            .required("Assigned contact is required"),
-          tags: yup.array().min(1).required("Tag is required")
-        })}
+        validationSchema={VALIDATION_SCHEMA}
       >
         <Form className="w-full">
           <Pane.Body>
