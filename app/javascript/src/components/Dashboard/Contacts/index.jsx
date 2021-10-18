@@ -39,7 +39,7 @@ const Contacts = () => {
               <>
                 <Input
                   placeholder="Search name, Email, Phone Number etc"
-                  className="flex flex-row w-72 h-8 m-2"
+                  className="flex w-72 h-8 m-2"
                   size="small"
                   prefix={<Search size={16} />}
                 />

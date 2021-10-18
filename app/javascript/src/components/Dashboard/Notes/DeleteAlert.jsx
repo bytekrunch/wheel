@@ -7,8 +7,8 @@ import notesApi from "apis/notes";
 export default function DeleteAlert({ refetch, onClose, selectedNoteIds }) {
   const [deleting, setDeleting] = useState(false);
   const handleDelete = async () => {
+    setDeleting(true);
     try {
-      setDeleting(true);
       await notesApi.destroy({ ids: selectedNoteIds });
       onClose();
       refetch();

@@ -40,14 +40,12 @@ export default function NewNotePane({ newNotes, showPane, setShowPane }) {
               <Input
                 label="Title"
                 name="title"
-                className="mb-6"
                 placeholder="Enter Title"
                 required={true}
               />
               <Input
                 label="Description"
                 name="description"
-                className="mb-6"
                 placeholder="Enter Description"
                 size="large"
                 required={true}

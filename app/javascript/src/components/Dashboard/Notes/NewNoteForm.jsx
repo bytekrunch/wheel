@@ -1,13 +1,16 @@
 import React from "react";
 
 import { Formik, Form } from "formik";
-import { Select } from "neetoui/v2/formik";
-import { Input, Textarea } from "neetoui/v2/formik";
-import * as yup from "yup";
+import { Input, Textarea, Select } from "neetoui/v2/formik";
 
 import notesApi from "apis/notes";
 
-import { ASSIGNED_CONTACT, TAGS } from "./Constants";
+import {
+  ASSIGNED_CONTACT,
+  TAGS,
+  INITIAL_VALUES,
+  VALIDATION_SCHEMA
+} from "./Constants";
 
 export default function NewNoteForm({ onClose, refetch }) {
   const handleSubmit = async values => {
@@ -21,29 +24,15 @@ export default function NewNoteForm({ onClose, refetch }) {
   };
   return (
     <Formik
-      initialValues={{
-        title: "",
-        description: ""
-      }}
+      initialValues={INITIAL_VALUES}
       onSubmit={handleSubmit}
-      validationSchema={yup.object({
-        title: yup.string().required("Title is required"),
-        description: yup.string().required("Description is required"),
-        role: yup
-          .object({
-            label: yup.string(),
-            value: yup.string()
-          })
-          .required("Role required"),
-        tags: yup.array().min(1).required("Tag required")
-      })}
+      validationSchema={VALIDATION_SCHEMA}
     >
       {() => (
         <Form>
           <Input
             label="Title"
             name="title"
-            className="mb-6"
             required={true}
             placeholder="Enter Note Title"
           />

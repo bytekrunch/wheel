@@ -2,8 +2,7 @@ import React from "react";
 
 import { Check } from "@bigbinary/neeto-icons";
 import { Formik, Form } from "formik";
-import { Button, Pane, Typography } from "neetoui/v2";
-import { Toastr } from "neetoui/v2";
+import { Button, Pane, Typography, Toastr } from "neetoui/v2";
 import { Input, Select } from "neetoui/v2/formik";
 
 import { ROLE, VALIDATION_SCHEMA, INITIAL_VALUES } from "./Constants";
@@ -31,19 +30,17 @@ export default function NewContactPane({ showPane, setShowPane }) {
       >
         <Form>
           <Pane.Body>
-            <div>
+            <div className="space-y-3">
               <div className="flex space-x-2">
                 <Input
                   label="First Name"
                   name="firstName"
-                  className="mb-6"
                   required={true}
                   placeholder="Enter First Name"
                 />
                 <Input
                   label="Last Name"
                   name="lastName"
-                  className="mb-6"
                   required={true}
                   placeholder="Enter Last Name"
                 />
@@ -52,7 +49,6 @@ export default function NewContactPane({ showPane, setShowPane }) {
               <Input
                 label="Email"
                 name="email"
-                className="mb-6"
                 required={true}
                 placeholder="Enter Email"
               />
