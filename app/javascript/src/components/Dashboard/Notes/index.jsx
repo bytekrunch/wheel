@@ -2,8 +2,7 @@ import React, { useState } from "react";
 
 import { Search, BurgerMenu } from "@bigbinary/neeto-icons";
 import EmptyNotesListImage from "images/EmptyNotesList";
-import { PageLoader } from "neetoui";
-import { Button, Input } from "neetoui/v2";
+import { Button, Input, PageLoader } from "neetoui/v2";
 import { Header } from "neetoui/v2/layouts";
 import { Container } from "neetoui/v2/layouts";
 
@@ -59,7 +58,7 @@ const Notes = () => {
               <>
                 <Input
                   placeholder="Search name, Email, Phone Number etc"
-                  className="flex flex-row w-72 h-8 m-2"
+                  className="flex w-72 h-8 m-2"
                   size="small"
                   prefix={<Search size={16} />}
                 />

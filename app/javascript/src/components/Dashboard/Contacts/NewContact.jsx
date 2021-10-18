@@ -3,11 +3,10 @@ import React from "react";
 import { Formik, Form } from "formik";
 import { Select } from "neetoui/v2/formik";
 import { Input } from "neetoui/v2/formik";
-import * as yup from "yup";
 
 import notesApi from "apis/notes";
 
-import { ROLE } from "./Constants";
+import { ROLE, VALIDATION_SCHEMA, INITIAL_VALUES } from "./Constants";
 
 export default function NewContactForm({ onClose, refetch }) {
   const handleSubmit = async values => {
@@ -21,22 +20,9 @@ export default function NewContactForm({ onClose, refetch }) {
   };
   return (
     <Formik
-      initialValues={{
-        title: "",
-        description: ""
-      }}
+      initialValues={INITIAL_VALUES}
       onSubmit={handleSubmit}
-      validationSchema={yup.object({
-        firstName: yup.string().required("First Name is required"),
-        lastName: yup.string().required("Last Name is required"),
-        email: yup.string().email().required("Email is required"),
-        role: yup
-          .object({
-            label: yup.string(),
-            value: yup.string()
-          })
-          .required("Role required")
-      })}
+      validationSchema={VALIDATION_SCHEMA}
     >
       {() => (
         <Form>
