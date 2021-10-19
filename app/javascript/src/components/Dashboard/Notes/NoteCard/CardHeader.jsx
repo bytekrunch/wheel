@@ -22,9 +22,8 @@ export default function CardHeader({
           position="bottom-end"
           buttonStyle="text"
         >
-          <li className="w-52 my-2 m-4">Edit</li>
+          <li>Edit</li>
           <li
-            className="w-52 my-2 m-4"
             onClick={() => {
               setSelectedNoteIds([...selectedNoteIds, note.id]);
               setShowDeleteAlert(true);

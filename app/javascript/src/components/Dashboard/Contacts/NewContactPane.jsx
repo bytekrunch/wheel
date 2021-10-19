@@ -28,36 +28,28 @@ export default function NewContactPane({ showPane, setShowPane }) {
         onSubmit={handleSubmit}
         validationSchema={VALIDATION_SCHEMA}
       >
-        <Form>
+        <Form className="w-full">
           <Pane.Body>
-            <div className="space-y-3">
-              <div className="flex space-x-2">
+            <div className="space-y-3 w-full">
+              <div className="flex flex-row items-center justify-center space-x-8 space-x-2">
                 <Input
                   label="First Name"
                   name="firstName"
-                  required
                   placeholder="Enter First Name"
                 />
                 <Input
                   label="Last Name"
                   name="lastName"
-                  required
                   placeholder="Enter Last Name"
                 />
               </div>
 
-              <Input
-                label="Email"
-                name="email"
-                required
-                placeholder="Enter Email"
-              />
+              <Input label="Email" name="email" placeholder="Enter Email" />
 
               <div className="my-6">
                 <Select
                   isClearable
                   isSearchable
-                  required
                   label="Role"
                   name="role"
                   options={ROLE}

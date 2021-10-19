@@ -6,9 +6,7 @@ import ContactTableHeader from "./ContactTableHeader";
 const ContactTable = ({ setShowDeleteAlert }) => {
   return (
     <>
-      <table
-        className={`neeto-ui-table neeto-ui-table--checkbox neeto-ui-table--actions`}
-      >
+      <table className="neeto-ui-table neeto-ui-table--checkbox neeto-ui-table--actions table-fixed">
         <ContactTableHeader />
         <ContactTableBody setShowDeleteAlert={setShowDeleteAlert} />
       </table>
