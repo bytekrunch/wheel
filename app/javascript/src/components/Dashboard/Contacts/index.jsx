@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 
 import { Search, BurgerMenu } from "@bigbinary/neeto-icons";
-import { PageLoader } from "neetoui";
-import { Button, Pagination } from "neetoui/v2";
-import { Input } from "neetoui/v2";
-import { Header } from "neetoui/v2/layouts";
-import { Container } from "neetoui/v2/layouts";
+import { Button, Pagination, PageLoader, Input } from "neetoui/v2";
+import { Container, Header } from "neetoui/v2/layouts";
 
 import ContactsMenuBar from "components/Common/Navbar/ContactsMenuBar";
 
+import ContactTable from "./ContactTable";
 import DeleteAlert from "./DeleteAlert";
 import NewContactPane from "./NewContactPane";
-import Table from "./Table";
 
 const Contacts = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -66,7 +63,7 @@ const Contacts = () => {
           {isLoading ? (
             <PageLoader />
           ) : (
-            <Table setShowDeleteAlert={setShowDeleteAlert} />
+            <ContactTable setShowDeleteAlert={setShowDeleteAlert} />
           )}
           {/* </Scrollable> */}
           <div className="flex flex-row items-center justify-end w-full mt-6 mb-8">

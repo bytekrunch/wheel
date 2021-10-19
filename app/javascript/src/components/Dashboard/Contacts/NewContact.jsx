@@ -1,8 +1,7 @@
 import React from "react";
 
 import { Formik, Form } from "formik";
-import { Select } from "neetoui/v2/formik";
-import { Input } from "neetoui/v2/formik";
+import { Select, Input } from "neetoui/v2/formik";
 
 import notesApi from "apis/notes";
 
@@ -31,14 +30,14 @@ export default function NewContactForm({ onClose, refetch }) {
               label="First Name"
               name="firstName"
               className="mb-6"
-              required={true}
+              required
               placeholder="Enter First Name"
             />
             <Input
               label="Last Name"
               name="lastName"
               className="mb-6"
-              required={true}
+              required
               placeholder="Enter Last Name"
             />
           </div>
@@ -47,7 +46,7 @@ export default function NewContactForm({ onClose, refetch }) {
             label="Email"
             name="email"
             className="mb-6"
-            required={true}
+            required
             placeholder="Enter Last Name"
           />
 
@@ -55,7 +54,7 @@ export default function NewContactForm({ onClose, refetch }) {
             <Select
               isClearable
               isSearchable
-              required={true}
+              required
               label="Role"
               name="role"
               options={ROLE}

@@ -41,14 +41,14 @@ export default function NewNotePane({ newNotes, showPane, setShowPane }) {
                 label="Title"
                 name="title"
                 placeholder="Enter Title"
-                required={true}
+                required
               />
               <Input
                 label="Description"
                 name="description"
                 placeholder="Enter Description"
                 size="large"
-                required={true}
+                required
               />
               <Select
                 isClearable
@@ -61,7 +61,7 @@ export default function NewNotePane({ newNotes, showPane, setShowPane }) {
               <Select
                 isClearable
                 isSearchable
-                required={true}
+                required
                 isMulti
                 label="Tags"
                 name="tags"
