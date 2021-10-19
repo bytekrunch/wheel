@@ -33,21 +33,21 @@ export default function NewNoteForm({ onClose, refetch }) {
           <Input
             label="Title"
             name="title"
-            required={true}
+            required
             placeholder="Enter Note Title"
           />
           <Textarea
             label="Description"
             name="description"
             rows={1}
-            required={true}
+            required
             placeholder="Enter Note Description"
           />
           <div className="my-6">
             <Select
               isClearable
               isSearchable
-              required={true}
+              required
               label="Assigned Contact"
               name="assignedContact"
               options={ASSIGNED_CONTACT}
@@ -58,7 +58,7 @@ export default function NewNoteForm({ onClose, refetch }) {
             <Select
               isClearable
               isSearchable
-              required={true}
+              required
               isMulti
               label="Tags"
               name="tags"

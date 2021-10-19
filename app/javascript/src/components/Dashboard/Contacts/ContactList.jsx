@@ -1,8 +1,7 @@
 import React from "react";
 
 import { MenuHorizontal } from "@bigbinary/neeto-icons";
-import { Dropdown, Checkbox, Avatar } from "neetoui/v2";
-import { Typography } from "neetoui/v2";
+import { Dropdown, Checkbox, Avatar, Typography } from "neetoui/v2";
 
 const Table = ({ setShowDeleteAlert }) => {
   return (

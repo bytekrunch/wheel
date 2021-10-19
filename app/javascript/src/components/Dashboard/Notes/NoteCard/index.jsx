@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Typography } from "neetoui/v2";
+
 import CardBody from "./CardBody";
 import CardFooter from "./CardFooter";
 import CardHeader from "./CardHeader";
@@ -26,7 +28,9 @@ export default function NoteCard({
               selectedNoteIds={selectedNoteIds}
               setSelectedNoteIds={setSelectedNoteIds}
             />
-            <CardBody note={note} />
+            <CardBody>
+              <Typography style="body2">{note.description}</Typography>
+            </CardBody>
           </div>
           <CardFooter />
         </div>

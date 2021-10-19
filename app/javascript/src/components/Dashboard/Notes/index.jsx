@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import { Search, BurgerMenu } from "@bigbinary/neeto-icons";
 import EmptyNotesListImage from "images/EmptyNotesList";
 import { Button, Input, PageLoader } from "neetoui/v2";
-import { Header } from "neetoui/v2/layouts";
-import { Container } from "neetoui/v2/layouts";
+import { Container, Header } from "neetoui/v2/layouts";
 
 import EmptyState from "components/Common/EmptyState";
 import NotesMenuBar from "components/Common/Navbar/Menubar";

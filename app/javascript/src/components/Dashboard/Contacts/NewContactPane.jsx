@@ -35,13 +35,13 @@ export default function NewContactPane({ showPane, setShowPane }) {
                 <Input
                   label="First Name"
                   name="firstName"
-                  required={true}
+                  required
                   placeholder="Enter First Name"
                 />
                 <Input
                   label="Last Name"
                   name="lastName"
-                  required={true}
+                  required
                   placeholder="Enter Last Name"
                 />
               </div>
@@ -49,7 +49,7 @@ export default function NewContactPane({ showPane, setShowPane }) {
               <Input
                 label="Email"
                 name="email"
-                required={true}
+                required
                 placeholder="Enter Email"
               />
 
@@ -57,7 +57,7 @@ export default function NewContactPane({ showPane, setShowPane }) {
                 <Select
                   isClearable
                   isSearchable
-                  required={true}
+                  required
                   label="Role"
                   name="role"
                   options={ROLE}
