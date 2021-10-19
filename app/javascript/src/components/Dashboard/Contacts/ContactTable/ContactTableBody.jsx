@@ -15,7 +15,7 @@ const ContactTableBody = ({ setShowDeleteAlert }) => {
                 <td>
                   <Checkbox name="1" />
                 </td>
-                <td>
+                <td className="truncate">
                   <div className="flex space-x-4">
                     <Avatar
                       size="large"
@@ -31,18 +31,17 @@ const ContactTableBody = ({ setShowDeleteAlert }) => {
                     </div>
                   </div>
                 </td>
-                <td>albert@borer.com</td>
-                <td>Feb 5, 2021</td>
-                <td>
+                <td className="truncate">albert@borer.com</td>
+                <td className="truncate">Feb 5, 2021</td>
+                <td className="truncate">
                   <div className="flex flex-row items-center justify-end space-x-3">
                     <Dropdown
                       icon={MenuHorizontal}
                       buttonStyle="icon"
                       autoWidth
                     >
-                      <li className="w-52 my-2 m-4">Edit</li>
+                      <li>Edit</li>
                       <li
-                        className="w-52 my-2 m-4"
                         onClick={() => {
                           setShowDeleteAlert(true);
                         }}
@@ -57,7 +56,7 @@ const ContactTableBody = ({ setShowDeleteAlert }) => {
                 <td>
                   <Checkbox name="2" />
                 </td>
-                <td>
+                <td className="truncate">
                   <div className="flex space-x-4 ">
                     <Avatar
                       size="large"
@@ -75,18 +74,17 @@ const ContactTableBody = ({ setShowDeleteAlert }) => {
                   </div>
                 </td>
 
-                <td>albert@borer.com</td>
-                <td>Feb 5, 2021</td>
-                <td>
+                <td className="truncate">albert@borer.com</td>
+                <td className="truncate">Feb 5, 2021</td>
+                <td className="truncate">
                   <div className="flex flex-row items-center justify-end space-x-3">
                     <Dropdown
                       icon={MenuHorizontal}
                       buttonStyle="icon"
                       autoWidth
                     >
-                      <li className="w-52 my-2 m-4">Edit</li>
+                      <li>Edit</li>
                       <li
-                        className="w-52 my-2 m-4"
                         onClick={() => {
                           setShowDeleteAlert(true);
                         }}

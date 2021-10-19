@@ -54,9 +54,8 @@ const Table = ({ setShowDeleteAlert }) => {
                         buttonStyle="icon"
                         autoWidth
                       >
-                        <li className="w-52 my-2 m-4">Edit</li>
+                        <li>Edit</li>
                         <li
-                          className="w-52 my-2 m-4"
                           onClick={() => {
                             setShowDeleteAlert(true);
                           }}
@@ -98,9 +97,8 @@ const Table = ({ setShowDeleteAlert }) => {
                         buttonStyle="icon"
                         autoWidth
                       >
-                        <li className="w-52 my-2 m-4">Edit</li>
+                        <li>Edit</li>
                         <li
-                          className="w-52 my-2 m-4"
                           onClick={() => {
                             setShowDeleteAlert(true);
                           }}

@@ -37,18 +37,13 @@ export default function NewNotePane({ newNotes, showPane, setShowPane }) {
         <Form className="w-full">
           <Pane.Body>
             <div className="w-full space-y-6">
-              <Input
-                label="Title"
-                name="title"
-                placeholder="Enter Title"
-                required
-              />
+              <Input label="Title" name="title" placeholder="Enter Title" />
               <Input
                 label="Description"
                 name="description"
                 placeholder="Enter Description"
                 size="large"
-                required
+                // required
               />
               <Select
                 isClearable

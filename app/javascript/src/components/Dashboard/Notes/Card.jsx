@@ -15,7 +15,7 @@ export default function NoteCard({
         <div
           key={note.id}
           className={
-            "cursor-pointer my-1  bg-white border neeto-ui-bd-gray-300 p-4 neeto-ui-shadow-s  w-full hover:bg-gray-50 "
+            "cursor-pointer my-1  bg-white border neeto-ui-bd-gray-300 p-4 neeto-ui-shadow-s  w-full"
           }
         >
           <div className="border-b-2 relative">
@@ -27,9 +27,8 @@ export default function NoteCard({
                 position="bottom-end"
                 buttonStyle="text"
               >
-                <li className="w-52 my-2 m-4">Edit</li>
+                <li>Edit</li>
                 <li
-                  className="w-52 my-2 m-4"
                   onClick={() => {
                     setSelectedNoteIds([...selectedNoteIds, note.id]);
                     setShowDeleteAlert(true);

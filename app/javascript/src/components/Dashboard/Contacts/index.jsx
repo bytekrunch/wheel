@@ -34,17 +34,20 @@ const Contacts = () => {
           <Header
             actionBlock={
               <>
-                <Input
-                  placeholder="Search name, Email, Phone Number etc"
-                  className="flex w-72 h-8 m-2"
-                  size="small"
-                  prefix={<Search size={16} />}
-                />
-                <Button
-                  ClassName="mr-3 h-8"
-                  label="Add Contact +"
-                  onClick={() => setShowNewContactPane(true)}
-                />
+                <div className="flex flex-row space-x-4 items-center mr-3">
+                  <Input
+                    placeholder="Search name, Email, Phone Number etc"
+                    className="flex"
+                    size="small"
+                    prefix={<Search size={16} />}
+                  />
+                  <Button
+                    ClassName="mr-3 h-8"
+                    label="Add Contact +"
+                    className="h-8 item-center mr-3 px-5"
+                    onClick={() => setShowNewContactPane(true)}
+                  />
+                </div>
               </>
             }
             menuBarHandle={
